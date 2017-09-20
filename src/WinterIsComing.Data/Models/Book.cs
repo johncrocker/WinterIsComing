@@ -31,6 +31,6 @@ namespace WinterIsComing.Data.Models
         public string Publisher { get; set; }
 
         [JsonProperty(PropertyName = "authors")]
-        public string[] Authors { get; set; }
+        public IEnumerable<string> Authors { get; set; }
     }
 }

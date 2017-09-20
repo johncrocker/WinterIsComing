@@ -9,9 +9,9 @@ namespace WinterIsComing.Data.Interfaces
 {
     public interface IBookRepository
     {
-        Book Get(int id);
+        Book Get(int bookId);
 
-        IList<Book> List();
+        IEnumerable<Book> List();
 
     }
 }
