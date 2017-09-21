@@ -19,16 +19,28 @@ namespace WinterIsComing.WebApi
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "BookApi",
+                routeTemplate: "api/book/{bookId}",
+                defaults: new
+                {
+                    controller = "Book",
+                    bookId = RouteParameter.Optional
+                }
+            );
+
+            /*
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            */
         }
 
         public static void RegisterContentNegotiator(HttpConfiguration config)
         {
             var jsonFormatter = new JsonMediaTypeFormatter();
-            jsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.None;            
+            jsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.None;
             config.Services.Replace(typeof(IContentNegotiator), new JsonContentNegotiator(jsonFormatter));
         }
     }
