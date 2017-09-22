@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinterIsComing.WebApi", "src\WinterIsComing.WebApi\WinterIsComing.WebApi.csproj", "{5341D990-6CC1-4AF8-BFF7-C66EB63A00AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinterIsComing.Data", "src\WinterIsComing.Data\WinterIsComing.Data.csproj", "{9CB68583-8066-4D86-A4AC-8F4D5794C7CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{29B96666-B673-4FC9-93CD-BB6D5110D6D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{95FF3988-D416-473E-B4BD-521973AF6489}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documentation", "documentation", "{36FE2CF4-95D9-46BD-B485-DEB6581D9948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinterIsComing.Data.Tests", "tests\WinterIsComing.Data.Tests\WinterIsComing.Data.Tests.csproj", "{6F60D0E6-44F4-4CAD-8158-D7CB549B6644}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5341D990-6CC1-4AF8-BFF7-C66EB63A00AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5341D990-6CC1-4AF8-BFF7-C66EB63A00AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5341D990-6CC1-4AF8-BFF7-C66EB63A00AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5341D990-6CC1-4AF8-BFF7-C66EB63A00AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CB68583-8066-4D86-A4AC-8F4D5794C7CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB68583-8066-4D86-A4AC-8F4D5794C7CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB68583-8066-4D86-A4AC-8F4D5794C7CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB68583-8066-4D86-A4AC-8F4D5794C7CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F60D0E6-44F4-4CAD-8158-D7CB549B6644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F60D0E6-44F4-4CAD-8158-D7CB549B6644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F60D0E6-44F4-4CAD-8158-D7CB549B6644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F60D0E6-44F4-4CAD-8158-D7CB549B6644}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5341D990-6CC1-4AF8-BFF7-C66EB63A00AC} = {29B96666-B673-4FC9-93CD-BB6D5110D6D2}
+		{9CB68583-8066-4D86-A4AC-8F4D5794C7CA} = {29B96666-B673-4FC9-93CD-BB6D5110D6D2}
+		{6F60D0E6-44F4-4CAD-8158-D7CB549B6644} = {95FF3988-D416-473E-B4BD-521973AF6489}
+	EndGlobalSection
+EndGlobal
