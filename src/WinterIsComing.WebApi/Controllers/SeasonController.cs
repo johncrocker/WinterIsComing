@@ -29,39 +29,7 @@ namespace WinterIsComing.WebApi.Controllers
         {
 
         }
-
-        /// <summary>
-        /// Returns a list of the books
-        /// </summary>
-        /// <returns>Enumerable of Book</returns>
-        [HttpGet]
-        [ActionName("List")]
-        public IEnumerable<TvSeriesModel> List()
-        {
-            try
-            {
-                Logger.Trace("Begin => List");
-                IEnumerable<TvSeries> results = _tvSeriesRepository.List();
-
-                if (results == null)
-                {
-                    Logger.Debug("No Television Seasons found");
-                    throw new HttpResponseException(HttpStatusCode.NoContent);
-                }
-
-                return results.Select(t => TvSeriesModel.CopyFrom(t));
-            }
-            catch (Exception err)
-            {
-                Logger.Error("Error in List", err);
-                throw;
-            }
-            finally
-            {
-                Logger.Trace("End => List");
-            }
-        }
-
+    
         /// <summary>
         /// Returns the Television Season
         /// </summary>
