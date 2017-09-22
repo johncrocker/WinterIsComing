@@ -486,12 +486,6 @@
             Book API - Returns information about the Books
             </summary>
         </member>
-        <member name="M:WinterIsComing.WebApi.Controllers.BookController.List">
-            <summary>
-            Returns a list of the books
-            </summary>
-            <returns>Enumerable of Book</returns>
-        </member>
         <member name="M:WinterIsComing.WebApi.Controllers.BookController.Get(System.Int32)">
             <summary>
             Returns the given book
@@ -499,12 +493,59 @@
             <param name="bookId">Identifier of the book</param>
             <returns>Book</returns>
         </member>
-        <member name="M:WinterIsComing.WebApi.Controllers.BookController.ListCharacters(System.Int32)">
+        <member name="M:WinterIsComing.WebApi.Controllers.BookController.ListCharactersInBook(System.Int32)">
             <summary>
             Returns a list of the characters in a given book
             </summary>
             <param name="bookId">Identifier of the book</param>
             <returns>Enumerable of Character</returns>         
+        </member>
+        <member name="T:WinterIsComing.WebApi.Controllers.BooksController">
+            <summary>
+            Book API - Returns information about the Books
+            </summary>
+        </member>
+        <member name="M:WinterIsComing.WebApi.Controllers.BooksController.List">
+            <summary>
+            Returns a list of the books
+            </summary>
+            <returns>Enumerable of Book</returns>
+        </member>
+        <member name="T:WinterIsComing.WebApi.Controllers.SeasonController">
+            <summary>
+            Television Season API Returns information about the Broadcast Television Seasons
+            </summary>
+        </member>
+        <member name="M:WinterIsComing.WebApi.Controllers.SeasonController.List">
+            <summary>
+            Returns a list of the books
+            </summary>
+            <returns>Enumerable of Book</returns>
+        </member>
+        <member name="M:WinterIsComing.WebApi.Controllers.SeasonController.Get(System.Int32)">
+            <summary>
+            Returns the Television Season
+            </summary>
+            <param name="season">Season number</param>
+            <returns>Season</returns>
+        </member>
+        <member name="M:WinterIsComing.WebApi.Controllers.SeasonController.ListCharactersInSeason(System.Int32)">
+            <summary>
+            Returns a list of the characters in a Television Season
+            </summary>
+            <param name="season">Season</param>
+            <returns>Enumerable of Character</returns>         
+        </member>
+        <member name="T:WinterIsComing.WebApi.Controllers.SeasonsController">
+            <summary>
+            Television Seasons API - Returns information about the Television Seasons
+            </summary>
+        </member>
+        <member name="M:WinterIsComing.WebApi.Controllers.SeasonsController.List">
+            <summary>
+            Returns a list of the Television Seasons
+            </summary>
+            <returns>Enumerable of Season</returns>
         </member>
         <member name="T:WinterIsComing.WebApi.Models.BookModel">
             <summary>
@@ -594,6 +635,16 @@
             </summary>
             <param name="character">Source Character</param>
             <returns>ChracterModel of Character</returns>
+        </member>
+        <member name="T:WinterIsComing.WebApi.Models.TvSeriesModel">
+            <summary>
+            Represents a Television Season
+            </summary>
+        </member>
+        <member name="P:WinterIsComing.WebApi.Models.TvSeriesModel.Name">
+            <summary>
+            Television Season Name
+            </summary>
         </member>
     </members>
 </doc>

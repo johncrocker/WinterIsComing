@@ -10,27 +10,26 @@ using WinterIsComing.Data.Models;
 
 namespace WinterIsComing.Data.Repositories
 {
-    public class BookRepository : AbstractRepository, IBookRepository
+    public class TvSeriesRepository : AbstractRepository, ITvSeriesRepository
     {
-
-        public Book Get(int bookId)
+        public TvSeries Get(int season)
         {
             try
             {
                 Logger.Trace("Begin -> Get");
-                Logger.DebugFormat("Parameters [bookId={0}]", bookId);
+                Logger.DebugFormat("Parameters [season={0}]", season);
 
                 using (IGraphClient client = DatabaseFactory.CreateReader())
                 {
-                    Book result = client.Cypher
+                    TvSeries result = client.Cypher
                         .Match(
-                            "(book:Book {id: {id} })")
+                            "(series:TvSeries {name: {name} })")
                         .WithParams(new Dictionary<string, object>
                         {
-                            {"id", bookId}
+                            {"name", string.Format("Season {0}", season)}
                         })
-                        .Return(book => book.As<Book>())
-                        .OrderBy(new[] { "book.id" })
+                        .Return(series => series.As<TvSeries>())
+                        .OrderBy(new[] { "series.name" })
                         .Results.FirstOrDefault();
 
                     Logger.Trace("End -> Get");
@@ -44,7 +43,7 @@ namespace WinterIsComing.Data.Repositories
             }
         }
 
-        public IEnumerable<Book> List()
+        public IEnumerable<TvSeries> List()
         {
             try
             {
@@ -52,10 +51,10 @@ namespace WinterIsComing.Data.Repositories
 
                 using (IGraphClient client = DatabaseFactory.CreateReader())
                 {
-                    IEnumerable<Book> results = client.Cypher
-                        .Match("(book:Book)")
-                        .Return(book => book.As<Book>())
-                        .OrderBy(new[] { "book.name" })
+                    IEnumerable<TvSeries> results = client.Cypher
+                        .Match("(series:TvSeries)")
+                        .Return(series => series.As<TvSeries>())
+                        .OrderBy(new[] { "series.name" })
                         .Results;
 
                     Logger.Trace("End -> List");
@@ -69,32 +68,32 @@ namespace WinterIsComing.Data.Repositories
             }
         }
 
-        public IEnumerable<Character> ListCharactersInBook(int bookId)
+        public IEnumerable<Character> ListCharactersInSeason(int season)
         {
             try
             {
-                Logger.Trace("Begin -> ListCharactersInBook");
-                Logger.DebugFormat("Parameters [bookId={0}]", bookId);
+                Logger.Trace("Begin -> ListCharactersInSeries");
+                Logger.DebugFormat("Parameters [season={0}]", season);
 
                 using (IGraphClient client = DatabaseFactory.CreateReader())
                 {
                     IEnumerable<Character> results = client.Cypher
-                        .Match("(book:Book {id: {id} })-[APPEARS]-(character:Character)")
+                        .Match("(series:TvSeries {name: {name} })-[APPEAREDIN]-(character:Character)")
                         .WithParams(new Dictionary<string, object>
                         {
-                            {"id", bookId}
+                            {"name", string.Format("Season {0}", season)}
                         })
                         .Return(character => character.As<Character>())
                         .OrderBy(new[] { "character.name" })
                         .Results;
 
-                    Logger.Trace("End -> ListCharactersInBook");
+                    Logger.Trace("End -> ListCharactersInSeries");
                     return results;
                 }
             }
             catch (Exception err)
             {
-                Logger.Error("Error in ListCharactersInBook", err);
+                Logger.Error("Error in ListCharactersInSeries", err);
                 throw;
             }
         }

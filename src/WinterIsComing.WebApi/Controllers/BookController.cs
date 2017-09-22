@@ -29,46 +29,14 @@ namespace WinterIsComing.WebApi.Controllers
         {
 
         }
-
-        /// <summary>
-        /// Returns a list of the books
-        /// </summary>
-        /// <returns>Enumerable of Book</returns>
-        [HttpGet]
-        [ActionName("")]
-        public IEnumerable<BookModel> List()
-        {
-            try
-            {
-                Logger.Trace("Begin => List");
-                IEnumerable<Book> results = _bookRepository.List();
-
-                if (results == null)
-                {
-                    Logger.Debug("No books found");
-                    throw new HttpResponseException(HttpStatusCode.NoContent);
-                }
-
-                return results.Select(t => BookModel.CopyFrom(t));
-            }
-            catch (Exception err)
-            {
-                Logger.Error("Error in List", err);
-                throw;
-            }
-            finally
-            {
-                Logger.Trace("End => List");
-            }
-        }
-
+ 
         /// <summary>
         /// Returns the given book
         /// </summary>
         /// <param name="bookId">Identifier of the book</param>
         /// <returns>Book</returns>
         [HttpGet]
-        [ActionName("")]
+        [ActionName("Detail")]
         public BookModel Get(int bookId)
         {
             try
@@ -104,11 +72,11 @@ namespace WinterIsComing.WebApi.Controllers
         /// <returns>Enumerable of Character</returns>         
         [HttpGet]
         [ActionName("Characters")]
-        public IEnumerable<CharacterModel> ListCharacters(int bookId)
+        public IEnumerable<CharacterModel> ListCharactersInBook(int bookId)
         {
             try
             {
-                Logger.Trace("Begin => ListCharacters");
+                Logger.Trace("Begin => ListCharactersInBook");
                 IEnumerable<Character> results = _bookRepository.ListCharactersInBook(bookId);
 
                 if (results == null)
@@ -121,12 +89,12 @@ namespace WinterIsComing.WebApi.Controllers
             }
             catch (Exception err)
             {
-                Logger.Error("Error in ListCharacters", err);
+                Logger.Error("Error in ListCharactersInBook", err);
                 throw;
             }
             finally
             {
-                Logger.Trace("End => ListCharacters");
+                Logger.Trace("End => ListCharactersInBook");
             }
         }
     }
