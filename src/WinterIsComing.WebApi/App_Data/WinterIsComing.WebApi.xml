@@ -539,12 +539,6 @@
             Television Season API Returns information about the Broadcast Television Seasons
             </summary>
         </member>
-        <member name="M:WinterIsComing.WebApi.Controllers.SeasonController.List">
-            <summary>
-            Returns a list of the books
-            </summary>
-            <returns>Enumerable of Book</returns>
-        </member>
         <member name="M:WinterIsComing.WebApi.Controllers.SeasonController.Get(System.Int32)">
             <summary>
             Returns the Television Season
