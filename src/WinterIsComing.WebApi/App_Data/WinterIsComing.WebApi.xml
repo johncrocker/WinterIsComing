@@ -499,6 +499,13 @@
             <param name="bookId">Identifier of the book</param>
             <returns>Book</returns>
         </member>
+        <member name="M:WinterIsComing.WebApi.Controllers.BookController.ListCharacters(System.Int32)">
+            <summary>
+            Returns a list of the characters in a given book
+            </summary>
+            <param name="bookId">Identifier of the book</param>
+            <returns>Enumerable of Character</returns>         
+        </member>
         <member name="T:WinterIsComing.WebApi.Models.BookModel">
             <summary>
             Represents a Book
@@ -550,6 +557,43 @@
             </summary>
             <param name="book">Source Book</param>
             <returns>BookModel of Book</returns>
+        </member>
+        <member name="T:WinterIsComing.WebApi.Models.CharacterModel">
+            <summary>
+            Represents a Book
+            </summary>
+        </member>
+        <member name="P:WinterIsComing.WebApi.Models.CharacterModel.Id">
+            <summary>
+            Identifier of Character
+            </summary>
+        </member>
+        <member name="P:WinterIsComing.WebApi.Models.CharacterModel.Aliases">
+            <summary>
+            Character Aliases
+            </summary>
+        </member>
+        <member name="P:WinterIsComing.WebApi.Models.CharacterModel.Name">
+            <summary>
+            Character name
+            </summary>
+        </member>
+        <member name="P:WinterIsComing.WebApi.Models.CharacterModel.PlayedBy">
+            <summary>
+            Character played by in TV Series
+            </summary>
+        </member>
+        <member name="P:WinterIsComing.WebApi.Models.CharacterModel.Titles">
+            <summary>
+            Character Titles
+            </summary>
+        </member>
+        <member name="M:WinterIsComing.WebApi.Models.CharacterModel.CopyFrom(WinterIsComing.Data.Models.Character)">
+            <summary>
+            Converts the given Character into a CharacterModel
+            </summary>
+            <param name="character">Source Character</param>
+            <returns>ChracterModel of Character</returns>
         </member>
     </members>
 </doc>

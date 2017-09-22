@@ -13,5 +13,6 @@ namespace WinterIsComing.Data.Interfaces
 
         IEnumerable<Book> List();
 
+        IEnumerable<Character> ListCharactersInBook(int bookId);
     }
 }

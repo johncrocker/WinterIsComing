@@ -173,6 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BookModel.cs" />
+    <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AbstractApiController.cs" />
     <Compile Include="Services\JsonContentNegotiator.cs" />

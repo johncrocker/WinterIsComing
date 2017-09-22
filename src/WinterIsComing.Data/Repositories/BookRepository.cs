@@ -30,6 +30,7 @@ namespace WinterIsComing.Data.Repositories
                             {"id", bookId}
                         })
                         .Return(book => book.As<Book>())
+                        .OrderBy(new[] { "book.id" })
                         .Results.FirstOrDefault();
 
                     Logger.Trace("End -> Get");
@@ -63,6 +64,36 @@ namespace WinterIsComing.Data.Repositories
             catch (Exception err)
             {
                 Logger.Error("Error in List", err);
+                throw;
+            }
+        }
+
+        public IEnumerable<Character> ListCharactersInBook(int bookId)
+        {
+            try
+            {
+                Logger.Trace("Begin -> ListCharactersInBook");
+                Logger.DebugFormat("Parameters [bookId={0}]", bookId);
+
+                using (IGraphClient client = DatabaseFactory.CreateReader())
+                {
+                    IEnumerable<Character> results = client.Cypher
+                        .Match("(book:Book {id: {id} })-[APPEARS]-(character:Character)")
+                        .WithParams(new Dictionary<string, object>
+                        {
+                            {"id", bookId}
+                        })
+                        .Return(character => character.As<Character>())
+                        .OrderBy(new[] { "character.name" })
+                        .Results;
+
+                    Logger.Trace("End -> ListCharactersInBook");
+                    return results;
+                }
+            }
+            catch (Exception err)
+            {
+                Logger.Error("Error in ListCharactersInBook", err);
                 throw;
             }
         }

@@ -35,6 +35,7 @@ namespace WinterIsComing.WebApi.Controllers
         /// </summary>
         /// <returns>Enumerable of Book</returns>
         [HttpGet]
+        [ActionName("")]
         public IEnumerable<BookModel> List()
         {
             try
@@ -67,6 +68,7 @@ namespace WinterIsComing.WebApi.Controllers
         /// <param name="bookId">Identifier of the book</param>
         /// <returns>Book</returns>
         [HttpGet]
+        [ActionName("")]
         public BookModel Get(int bookId)
         {
             try
@@ -92,6 +94,39 @@ namespace WinterIsComing.WebApi.Controllers
             finally
             {
                 Logger.Trace("End => Get");
+            }
+        }
+
+        /// <summary>
+        /// Returns a list of the characters in a given book
+        /// </summary>
+        /// <param name="bookId">Identifier of the book</param>
+        /// <returns>Enumerable of Character</returns>         
+        [HttpGet]
+        [ActionName("Characters")]
+        public IEnumerable<CharacterModel> ListCharacters(int bookId)
+        {
+            try
+            {
+                Logger.Trace("Begin => ListCharacters");
+                IEnumerable<Character> results = _bookRepository.ListCharactersInBook(bookId);
+
+                if (results == null)
+                {
+                    Logger.Debug("No Characters found for this Book");
+                    throw new HttpResponseException(HttpStatusCode.NoContent);
+                }
+
+                return results.Select(t => CharacterModel.CopyFrom(t));
+            }
+            catch (Exception err)
+            {
+                Logger.Error("Error in ListCharacters", err);
+                throw;
+            }
+            finally
+            {
+                Logger.Trace("End => ListCharacters");
             }
         }
     }

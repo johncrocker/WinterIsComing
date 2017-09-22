@@ -66,6 +66,7 @@
     <Compile Include="Interfaces\IBookRepository.cs" />
     <Compile Include="Interfaces\IGraphDatabaseFactory.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Character.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BookRepository.cs" />
     <Compile Include="Repositories\AbstractRepository.cs" />

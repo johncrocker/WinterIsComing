@@ -20,11 +20,12 @@ namespace WinterIsComing.WebApi
 
             config.Routes.MapHttpRoute(
                 name: "BookApi",
-                routeTemplate: "api/book/{bookId}",
+                routeTemplate: "api/book/{bookId}/{action}",
                 defaults: new
                 {
                     controller = "Book",
-                    bookId = RouteParameter.Optional
+                    bookId = RouteParameter.Optional,
+                    action = RouteParameter.Optional
                 }
             );
 
