@@ -511,6 +511,29 @@
             </summary>
             <returns>Enumerable of Book</returns>
         </member>
+        <member name="T:WinterIsComing.WebApi.Controllers.CultureController">
+            <summary>
+            Cultures API Returns information on the Cultures present
+            </summary>
+        </member>
+        <member name="M:WinterIsComing.WebApi.Controllers.CultureController.ListCharactersInCulture(System.String)">
+            <summary>
+            Returns a list of characters in the given culture
+            </summary>
+            <param name="name">Culture name</param>
+            <returns>Book</returns>
+        </member>
+        <member name="T:WinterIsComing.WebApi.Controllers.CulturesController">
+            <summary>
+            Cultures API Returns information on the Cultures present
+            </summary>
+        </member>
+        <member name="M:WinterIsComing.WebApi.Controllers.CulturesController.List">
+            <summary>
+            Returns a list of the Cultures
+            </summary>
+            <returns>Enumerable of Cultures</returns>
+        </member>
         <member name="T:WinterIsComing.WebApi.Controllers.SeasonController">
             <summary>
             Television Season API Returns information about the Broadcast Television Seasons
@@ -538,7 +561,7 @@
         </member>
         <member name="T:WinterIsComing.WebApi.Controllers.SeasonsController">
             <summary>
-            Television Seasons API - Returns information about the Television Seasons
+            Television Season API Returns information about the Broadcast Television Seasons
             </summary>
         </member>
         <member name="M:WinterIsComing.WebApi.Controllers.SeasonsController.List">

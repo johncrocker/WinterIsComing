@@ -28,31 +28,47 @@ namespace WinterIsComing.WebApi
             );
 
             config.Routes.MapHttpRoute(
+                name: "BookApi",
+                routeTemplate: "api/book/{bookId}/{action}",
+                defaults: new
+                {
+                    controller = "Book"
+                }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "CulturesApi",
+                routeTemplate: "api/cultures",
+                defaults: new
+                {
+                    controller = "Cultures"
+                }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "CultureApi",
+                routeTemplate: "api/culture/{name}/{action}",
+                defaults: new
+                {
+                    controller = "Culture"
+                }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "SeasonsApi",
                 routeTemplate: "api/seasons",
                 defaults: new
                 {
                     controller = "Seasons"
                 }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "BookApi",
-                routeTemplate: "api/book/{bookId}/{action}",
-                defaults: new
-                {
-                    controller = "Book",
-                    bookId = RouteParameter.Optional
-                }
-            );
+            );            
 
             config.Routes.MapHttpRoute(
                 name: "SeasonApi",
                 routeTemplate: "api/season/{season}/{action}",
                 defaults: new
                 {
-                    controller = "Season",
-                    season = RouteParameter.Optional
+                    controller = "Season"
                 }
             );
 

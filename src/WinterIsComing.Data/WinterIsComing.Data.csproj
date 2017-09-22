@@ -64,14 +64,17 @@
   <ItemGroup>
     <Compile Include="Factories\GraphDatabaseFactory.cs" />
     <Compile Include="Interfaces\IBookRepository.cs" />
+    <Compile Include="Interfaces\ICultureRepository.cs" />
     <Compile Include="Interfaces\IGraphDatabaseFactory.cs" />
     <Compile Include="Interfaces\ITvSeriesRepository.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Culture.cs" />
     <Compile Include="Models\TvSeries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BookRepository.cs" />
     <Compile Include="Repositories\AbstractRepository.cs" />
+    <Compile Include="Repositories\CultureRepository.cs" />
     <Compile Include="Repositories\TvSeriesRepository.cs" />
   </ItemGroup>
   <ItemGroup>

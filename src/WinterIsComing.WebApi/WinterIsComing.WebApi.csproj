@@ -170,6 +170,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\CultureController.cs" />
+    <Compile Include="Controllers\CulturesController.cs" />
     <Compile Include="Controllers\SeasonController.cs" />
     <Compile Include="Controllers\SeasonsController.cs" />
     <Compile Include="Global.asax.cs">
