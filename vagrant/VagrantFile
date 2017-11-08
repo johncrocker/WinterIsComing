@@ -14,12 +14,20 @@ echo debconf neo4j/question seen true | sudo debconf-set-selections
 sudo apt-get install oracle-java8-installer -y
 sudo apt-get install neo4j -y --force-yes
 service neo4j stop
+echo Installing APOC plugins
+cd /var/lib/neo4j/plugins
+wget -q https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.3.0.1/apoc-3.3.0.1-all.jar
+
+echo Setting up Directories.......
+rm -rf /vagrant/var
 mkdir -p /vagrant/var/lib/neo4j/data
 cp /vagrant/templates/neo4j.conf.template /etc/neo4j/neo4j.conf
+
 service neo4j start
 echo Waiting 5 seconds because Neo4J needs time to wake up fully..........
 sleep 5
-neo4j-shell -file /vagrant/templates/Neo4JDataLoadScripts.cql
+echo Downloading data and preparing database.............
+neo4j-shell -host 127.0.0.1 -file /vagrant/templates/Neo4JDataLoadScripts.cql
 SCRIPT
 
 Vagrant.configure("2") do |config|
