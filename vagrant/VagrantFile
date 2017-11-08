@@ -2,7 +2,7 @@ $PROVISIONSCRIPT = <<SCRIPT
 ip="$(ifconfig | grep -A 1 'eth0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
 neo4jhost="$(hostname)"
 
-wget -O -q - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
+wget -O - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
 echo 'deb https://debian.neo4j.org/repo stable/' | sudo tee /etc/apt/sources.list.d/neo4j.list
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update -y
@@ -17,6 +17,9 @@ service neo4j stop
 mkdir -p /vagrant/var/lib/neo4j/data
 cp /vagrant/templates/neo4j.conf.template /etc/neo4j/neo4j.conf
 service neo4j start
+echo Waiting 5 seconds because Neo4J needs time to wake up fully..........
+sleep 5
+neo4j-shell -file /vagrant/templates/Neo4JDataLoadScripts.cql
 SCRIPT
 
 Vagrant.configure("2") do |config|
