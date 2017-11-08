@@ -1,0 +1,40 @@
+$PROVISIONSCRIPT = <<SCRIPT
+ip="$(ifconfig | grep -A 1 'eth0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
+neo4jhost="$(hostname)"
+
+wget -O -q - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
+echo 'deb https://debian.neo4j.org/repo stable/' | sudo tee /etc/apt/sources.list.d/neo4j.list
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update -y
+
+echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections 
+echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+echo debconf neo4j/question select "I ACCEPT" | sudo debconf-set-selections
+echo debconf neo4j/question seen true | sudo debconf-set-selections
+sudo apt-get install oracle-java8-installer -y
+sudo apt-get install neo4j -y --force-yes
+service neo4j stop
+mkdir -p /vagrant/var/lib/neo4j/data
+cp /vagrant/templates/neo4j.conf.template /etc/neo4j/neo4j.conf
+service neo4j start
+SCRIPT
+
+Vagrant.configure("2") do |config|
+	config.vm.hostname = "neo4j"
+	config.vm.box = "ubuntu/trusty64"		
+	config.vbguest.auto_update = true
+	config.vbguest.no_remote = false
+		
+	config.vm.provider :virtualbox do |vbox|
+		vbox.memory = 4096
+		vbox.cpus = 2
+		vbox.name="Neo4J"
+	end
+	
+	config.vm.network  "private_network", ip: '192.168.56.101'
+	config.vm.network "forwarded_port", guest: 7473, host: 7473, protocol: "tcp"
+	config.vm.network "forwarded_port", guest: 7474, host: 7474, protocol: "tcp"
+	config.vm.network "forwarded_port", guest: 7687, host: 7687, protocol: "tcp"
+
+	config.vm.provision "shell", inline:$PROVISIONSCRIPT
+end
